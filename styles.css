@@ -1,0 +1,282 @@
+/* Basic, dependency-free styling for the notes app */
+
+:root {
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --danger: #dc2626;
+    --success-bg: #ecfdf5;
+    --success-text: #047857;
+    --error-bg: #fef2f2;
+    --error-text: #b91c1c;
+    --radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* The hidden attribute must win over any display rule below */
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        sans-serif;
+    line-height: 1.5;
+}
+
+/* ---------- Header ---------- */
+
+.topbar {
+    background: var(--primary);
+    color: #fff;
+    padding: 0.9rem 1.25rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.topbar-inner {
+    max-width: 880px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.topbar h1 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.user-box button {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+.user-box button:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+main {
+    max-width: 880px;
+    margin: auto;
+    padding: 1.25rem;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+    margin: 0 0 0.9rem;
+    font-size: 1.15rem;
+}
+
+.card h3 {
+    margin: 1.1rem 0 0.4rem;
+    font-size: 1rem;
+    color: var(--muted);
+}
+
+.auth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.admin-card {
+    border-top: 4px solid var(--primary);
+}
+
+/* ---------- Forms ---------- */
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.auth-grid {
+    align-items: start;
+}
+
+.auth-grid form {
+    flex-direction: column;
+}
+
+/* In a column, flex-basis would become a height: give inputs their natural size */
+.auth-grid input {
+    flex: none;
+}
+
+input,
+select {
+    flex: 1 1 160px;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font: inherit;
+    background: #fff;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: -1px;
+    border-color: var(--primary);
+}
+
+/* ---------- Buttons ---------- */
+
+button {
+    padding: 0.5rem 0.95rem;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    background: var(--primary);
+    color: #fff;
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--primary-dark);
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+button.secondary {
+    background: #fff;
+    color: var(--primary);
+}
+
+button.secondary:hover {
+    background: #eef2ff;
+}
+
+button.danger {
+    background: #fff;
+    border-color: var(--danger);
+    color: var(--danger);
+}
+
+button.danger:hover {
+    background: var(--error-bg);
+}
+
+button.small {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+}
+
+/* ---------- Lists ---------- */
+
+ul {
+    list-style: none;
+    margin: 0.75rem 0;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    background: #fafbff;
+    overflow-wrap: anywhere;
+}
+
+li .actions {
+    display: flex;
+    gap: 0.4rem;
+    flex-shrink: 0;
+}
+
+li.empty {
+    justify-content: center;
+    color: var(--muted);
+    background: transparent;
+    border-style: dashed;
+}
+
+/* ---------- Pagination ---------- */
+
+.pager {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* ---------- Messages ---------- */
+
+#message {
+    margin: 0 0 1rem;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+}
+
+#message:empty {
+    display: none;
+}
+
+#message.info {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+#message.error {
+    background: var(--error-bg);
+    color: var(--error-text);
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 600px) {
+    li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
