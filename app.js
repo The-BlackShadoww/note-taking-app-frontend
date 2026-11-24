@@ -1,7 +1,7 @@
 // Where the API lives. Locally it's your dev server; once deployed (Phase 13), your Render URL.
 const API_URL = ["localhost", "127.0.0.1"].includes(location.hostname)
     ? "http://localhost:3000/api"
-    : "https://YOUR-BACKEND.onrender.com/api"; // ← replace in Phase 13
+    : "https://note-taking-app-backend-lac.vercel.app/api"; // deployed backend (Vercel)
 
 let token = localStorage.getItem("token");
 let currentUser = null;
